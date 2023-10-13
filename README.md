@@ -1,2 +1,2 @@
 # tgbot
-Repo for tgbot
+Repo for convert currency tgbot 

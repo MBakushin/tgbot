@@ -29,4 +29,5 @@ class ExchangeRates:
             return False
         else:
             price = json.loads(response.content)["result"]
-            return f"{amount} {base.upper()} в {quote.upper()} = {price}"
+            return f"По Вашему запросу:\n" \
+                   f"{amount} {base.upper()} в {quote.upper()} = {price}"

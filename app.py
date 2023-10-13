@@ -5,16 +5,15 @@ from config import common_valuta, all_valuta
 from extensions import ExchangeRates, ConverterError
 
 
-load_dotenv()
-TOKEN = os.getenv("TOKEN")
-
 if __name__ == "__main__":
+    load_dotenv()
+    TOKEN = os.getenv("TOKEN")
     bot = telebot.TeleBot(TOKEN)
 
 
     @bot.message_handler(commands=["start", "help"])
     def echo_test(message: telebot.types.Message):
-        text = """🤖 Чтобы начать работу введите 
+        text = """🤖 Чтобы сделать запрос введите 
 команду в следующем формате:
 <количество валюты> <исходная валюта> 
 <валюта для конвертации>
@@ -50,7 +49,8 @@ if __name__ == "__main__":
             elif base.upper() not in all_valuta.keys():
                 raise ConverterError("Не могу определить исходную валюту\n")
             elif quote.upper() not in all_valuta.keys():
-                raise ConverterError("Не могу определить валюту для конвертации\n")
+                raise ConverterError("Не могу определить\n"
+                                     "валюту для конвертации\n")
         except ValueError:
             bot.send_message(message.chat.id, "Неверный формат данных\n"
                                               "Попробуйте снова")
